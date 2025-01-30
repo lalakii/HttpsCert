@@ -1,7 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Product>httpscert</Product>
     <AssemblyName>$(ProjectName)</AssemblyName>
+    <Version>1.1.0.0</Version>
     <OutputType>Exe</OutputType>
     <LangVersion>preview</LangVersion>
     <TargetFrameworks>net481</TargetFrameworks>
@@ -13,7 +15,6 @@
     <Authors>lalaki</Authors>
     <Company>$(Authors)</Company>
     <DebugType>none</DebugType>
-    <Prefer32Bit>False</Prefer32Bit>
     <WarningLevel>9999</WarningLevel>
     <IsPublishable>False</IsPublishable>
     <AnalysisLevel>latest-all</AnalysisLevel>

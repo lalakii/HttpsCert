@@ -61,6 +61,15 @@ namespace httpscert.src {
         }
         
         /// <summary>
+        ///   查找类似 Load:  的本地化字符串。
+        /// </summary>
+        internal static string Load {
+            get {
+                return ResourceManager.GetString("Load", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Successfully created.
         /// 的本地化字符串。
         /// </summary>
@@ -74,9 +83,10 @@ namespace httpscert.src {
         ///   查找类似 Https Cert Generator - by lalaki.cn
         ///
         ///    -d domain
-        ///    -p password (optional)
+        ///    -p password\\t(optional)
+        ///    -y years\\t(optional) default: 1
         ///
-        ///Example: .\httpscert -d localhost -p password
+        ///Example: .\httpscert -d localhost -p password -y 2
         /// 的本地化字符串。
         /// </summary>
         internal static string Title {
