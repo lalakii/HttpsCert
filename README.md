@@ -9,6 +9,7 @@ depends on [BouncyCastle](https://github.com/bcgit/bc-csharp)
 
     ```.\httpscert -d www.example.com```
 
+    ---
 
     You will get `"www.example.com.key"` and `"www.example.com.crt"`.
 
@@ -16,7 +17,8 @@ depends on [BouncyCastle](https://github.com/bcgit/bc-csharp)
 
     ```.\httpcert -d www.example.com -p password```
 
-
+    ---
+    
     You will get `"www.example.com.key"`、`"www.example.com.crt"` and `"www.example.com.pfx"`.
 
 ## License
