@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>$(ProjectName)</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <LangVersion>preview</LangVersion>
+    <TargetFrameworks>net481</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Copyright>Copyright (C) 2025 lalaki.cn</Copyright>
+    <Authors>lalaki</Authors>
+    <Company>$(Authors)</Company>
+    <DebugType>none</DebugType>
+    <Prefer32Bit>False</Prefer32Bit>
+    <WarningLevel>9999</WarningLevel>
+    <IsPublishable>False</IsPublishable>
+    <AnalysisLevel>latest-all</AnalysisLevel>
+    <NoWin32Manifest>true</NoWin32Manifest>
+    <GenerateSupportedRuntime>False</GenerateSupportedRuntime>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography">
+      <HintPath>lib\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Compile Update="src\LangRes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LangRes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="utils.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Utils.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="src\LangRes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LangRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Utils.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>utils.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
