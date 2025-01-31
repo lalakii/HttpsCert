@@ -61,6 +61,61 @@ namespace httpscert.src {
         }
         
         /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] bc {
+            get {
+                object obj = ResourceManager.GetObject("bc", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 × 的本地化字符串。
+        /// </summary>
+        internal static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Please enter one domain or IP address per line. 的本地化字符串。
+        /// </summary>
+        internal static string DomainTip {
+            get {
+                return ResourceManager.GetString("DomainTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 请输入域名或IP地址，每行一个。 的本地化字符串。
+        /// </summary>
+        internal static string DomainTipCN {
+            get {
+                return ResourceManager.GetString("DomainTipCN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Generate 的本地化字符串。
+        /// </summary>
+        internal static string Gen {
+            get {
+                return ResourceManager.GetString("Gen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 生成 的本地化字符串。
+        /// </summary>
+        internal static string GenCN {
+            get {
+                return ResourceManager.GetString("GenCN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Load: {0} - v{1}
         /// 的本地化字符串。
         /// </summary>
@@ -71,12 +126,74 @@ namespace httpscert.src {
         }
         
         /// <summary>
-        ///   查找类似 Successfully created.
-        /// 的本地化字符串。
+        ///   查找类似 — 的本地化字符串。
+        /// </summary>
+        internal static string Min {
+            get {
+                return ResourceManager.GetString("Min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Password: 的本地化字符串。
+        /// </summary>
+        internal static string Pwd {
+            get {
+                return ResourceManager.GetString("Pwd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 密码: 的本地化字符串。
+        /// </summary>
+        internal static string PwdCN {
+            get {
+                return ResourceManager.GetString("PwdCN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ? 的本地化字符串。
+        /// </summary>
+        internal static string Question {
+            get {
+                return ResourceManager.GetString("Question", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Save the certificate in... 的本地化字符串。
+        /// </summary>
+        internal static string SaveTo {
+            get {
+                return ResourceManager.GetString("SaveTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 将证书保存到... 的本地化字符串。
+        /// </summary>
+        internal static string SaveToCN {
+            get {
+                return ResourceManager.GetString("SaveToCN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Successfully created. 的本地化字符串。
         /// </summary>
         internal static string Success {
             get {
                 return ResourceManager.GetString("Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 创建成功 的本地化字符串。
+        /// </summary>
+        internal static string SuccessCN {
+            get {
+                return ResourceManager.GetString("SuccessCN", resourceCulture);
             }
         }
         
@@ -93,6 +210,60 @@ namespace httpscert.src {
         internal static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Valid for 的本地化字符串。
+        /// </summary>
+        internal static string ValidFor {
+            get {
+                return ResourceManager.GetString("ValidFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 有效期 的本地化字符串。
+        /// </summary>
+        internal static string ValidForCN {
+            get {
+                return ResourceManager.GetString("ValidForCN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Https Cert Generator 的本地化字符串。
+        /// </summary>
+        internal static string WindowTitle {
+            get {
+                return ResourceManager.GetString("WindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Https 证书生成器 的本地化字符串。
+        /// </summary>
+        internal static string WindowTitleCN {
+            get {
+                return ResourceManager.GetString("WindowTitleCN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 years 的本地化字符串。
+        /// </summary>
+        internal static string Years {
+            get {
+                return ResourceManager.GetString("Years", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 年 的本地化字符串。
+        /// </summary>
+        internal static string YearsCN {
+            get {
+                return ResourceManager.GetString("YearsCN", resourceCulture);
             }
         }
     }

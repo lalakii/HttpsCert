@@ -117,13 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="bc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\lib\bc.gz;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>×</value>
+  </data>
+  <data name="DomainTip" xml:space="preserve">
+    <value>Please enter one domain or IP address per line.</value>
+  </data>
+  <data name="DomainTipCN" xml:space="preserve">
+    <value>请输入域名或IP地址，每行一个。</value>
+  </data>
+  <data name="Gen" xml:space="preserve">
+    <value>Generate</value>
+  </data>
+  <data name="GenCN" xml:space="preserve">
+    <value>生成</value>
+  </data>
   <data name="Load" xml:space="preserve">
     <value>Load: {0} - v{1}
 </value>
   </data>
+  <data name="Min" xml:space="preserve">
+    <value>—</value>
+  </data>
+  <data name="Pwd" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="PwdCN" xml:space="preserve">
+    <value>密码:</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="SaveTo" xml:space="preserve">
+    <value>Save the certificate in...</value>
+  </data>
+  <data name="SaveToCN" xml:space="preserve">
+    <value>将证书保存到...</value>
+  </data>
   <data name="Success" xml:space="preserve">
-    <value>Successfully created.
-</value>
+    <value>Successfully created.</value>
+  </data>
+  <data name="SuccessCN" xml:space="preserve">
+    <value>创建成功</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Https Cert Generator - by lalaki.cn
@@ -134,5 +173,23 @@
 
 Example: .\httpscert -d localhost -p password -y 2
 </value>
+  </data>
+  <data name="ValidFor" xml:space="preserve">
+    <value>Valid for</value>
+  </data>
+  <data name="ValidForCN" xml:space="preserve">
+    <value>有效期</value>
+  </data>
+  <data name="WindowTitle" xml:space="preserve">
+    <value>Https Cert Generator</value>
+  </data>
+  <data name="WindowTitleCN" xml:space="preserve">
+    <value>Https 证书生成器</value>
+  </data>
+  <data name="Years" xml:space="preserve">
+    <value>years</value>
+  </data>
+  <data name="YearsCN" xml:space="preserve">
+    <value>年</value>
   </data>
 </root>

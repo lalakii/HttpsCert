@@ -3,8 +3,8 @@
   <PropertyGroup>
     <Product>httpscert</Product>
     <AssemblyName>$(ProjectName)</AssemblyName>
-    <Version>1.2.0.0</Version>
-    <OutputType>Exe</OutputType>
+    <Version>1.3.0.0</Version>
+    <OutputType>WinExe</OutputType>
     <LangVersion>preview</LangVersion>
     <TargetFrameworks>net481</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -18,12 +18,19 @@
     <WarningLevel>9999</WarningLevel>
     <IsPublishable>False</IsPublishable>
     <AnalysisLevel>latest-all</AnalysisLevel>
-    <NoWin32Manifest>true</NoWin32Manifest>
     <GenerateSupportedRuntime>False</GenerateSupportedRuntime>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>https.ico</ApplicationIcon>
+    <NoWarn>S1075;</NoWarn>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="https.ico" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Cryptography">
       <HintPath>lib\BouncyCastle.Cryptography.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Compile Update="src\LangRes.Designer.cs">

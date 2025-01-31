@@ -1,28 +1,19 @@
 # HttpsCert Generator for Windows
 
+[ [English](./README.md) | [简体中文](./README_cn.md) ]
+
 This tool easily creates HTTPS certificates (SSL) for testing.
 
 Based on [BouncyCastle](https://github.com/bcgit/bc-csharp).
 
-## Command example:
-+ Normal:    (You will get `"www.example.com.key"` and `"www.example.com.crt"`.)
+Password is optional, if ".pfx" format is required, please set the password.
+## Download
 
-    ```.\httpscert -d www.example.com```
+[Sourceforge](https://sourceforge.net/projects/https/) | [Github](https://github.com/lalakii/HttpsCert/releases)
 
-    ---
+## Demo
 
-+ PFX:    (You will get `"www.example.com.key"`、`"www.example.com.crt"` and `"www.example.com.pfx"`.)
+<img src="en.jpg">
 
-    ```.\httpcert -d www.example.com -p password```
-
-    ---
-    
-
-+ Validity period:    (Valid for 3 years)
-    
-    ```.\httpscert -d www.example.com -y 3```
-   
-    ---
-  
 ## License
 [MIT](https://github.com/lalakii/HttpsCert/blob/master/LICENSE)
