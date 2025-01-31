@@ -61,7 +61,8 @@ namespace httpscert.src {
         }
         
         /// <summary>
-        ///   查找类似 Load:  的本地化字符串。
+        ///   查找类似 Load: {0} - v{1}
+        /// 的本地化字符串。
         /// </summary>
         internal static string Load {
             get {

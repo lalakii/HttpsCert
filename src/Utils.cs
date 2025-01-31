@@ -13,69 +13,71 @@ using BigInteger = Org.BouncyCastle.Math.BigInteger;
 
 [assembly: NeutralResourcesLanguage("en")]
 var mArgs = args ?? [];
-var bc = typeof(BigInteger).Assembly;
-var bcv = ((AssemblyFileVersionAttribute)Attribute.GetCustomAttribute(bc, typeof(AssemblyFileVersionAttribute), false)).Version;
-var bcn = ((AssemblyProductAttribute)Attribute.GetCustomAttribute(bc, typeof(AssemblyProductAttribute), false)).Product;
-Console.WriteLine($"{LangRes.Load}{bcn} - v{bcv}\n");
-int domainIndex = -1, passIndex = -1, yearIndex = -1;
+string? domain = null, pass = null;
+int year = 1;
 for (int i = 0; i < mArgs.Length; i++)
 {
     var item = mArgs[i].Replace("-", "/");
-    if (item.StartsWith("/d", StringComparison.OrdinalIgnoreCase))
+    if (i + 1 < mArgs.Length)
     {
-        domainIndex = i;
-    }
-    else if (item.StartsWith("/p", StringComparison.OrdinalIgnoreCase))
-    {
-        passIndex = i;
-    }
-    else if (item.StartsWith("/y", StringComparison.OrdinalIgnoreCase))
-    {
-        yearIndex = i;
+        if (item.StartsWith("/d", StringComparison.OrdinalIgnoreCase))
+        {
+            domain = mArgs[i + 1].Replace('=', '-');
+        }
+        else if (item.StartsWith("/p", StringComparison.OrdinalIgnoreCase))
+        {
+            pass = mArgs[i + 1];
+        }
+        else if (item.StartsWith("/y", StringComparison.OrdinalIgnoreCase) && !int.TryParse(mArgs[i + 1], out year))
+        {
+            year = 1;
+        }
     }
 }
-if (domainIndex == -1 || domainIndex + 1 > mArgs.Length - 1)
+if (domain == null)
 {
+    var bc = typeof(BigInteger).Assembly;
+    var bcp = ((AssemblyProductAttribute)Attribute.GetCustomAttribute(bc, typeof(AssemblyProductAttribute), false)).Product;
+    var bcv = ((AssemblyFileVersionAttribute)Attribute.GetCustomAttribute(bc, typeof(AssemblyFileVersionAttribute), false)).Version;
+    Console.WriteLine(LangRes.Load, bcp, bcv);
     Console.Write(LangRes.Title.Replace("\\\\t", "\t\t"));
     return;
 }
-int year = 1;
-if (yearIndex != -1 && yearIndex + 1 < mArgs.Length && !int.TryParse(mArgs[yearIndex + 1], out year))
+if (year < 1 || year > 5000)
 {
-    year = 1;
+    year = 100;
 }
-var domain = mArgs[domainIndex + 1].Replace('=', '-');
 var alias = $"CN={domain}";
-using StringWriter writer = new();
-using PemWriter pw = new(writer);
 SecureRandom rand = new();
 RsaKeyPairGenerator gen = new();
 gen.Init(new(rand, 2048));
-var keyPair = gen.GenerateKeyPair();
-pw.WriteObject(keyPair.Private);
-var mKey = writer.ToString();//key
-File.WriteAllText($"{domain}.key", mKey);
-X509V3CertificateGenerator x509 = new();
+var key = gen.GenerateKeyPair();
+WriteObject($"{domain}.key", key.Private);//key
+GeneralName dns = new(GeneralName.DnsName, domain);
 X509Name name = new(alias);
+X509V3CertificateGenerator x509 = new();
 x509.SetIssuerDN(name);
 x509.SetSubjectDN(name);
 var date = DateTime.Now;
 x509.SetNotBefore(date);
 x509.SetNotAfter(date.AddYears(year));
-x509.SetPublicKey(keyPair.Public);
-x509.SetSerialNumber(BigInteger.ValueOf(Math.Abs(rand.NextLong())));
-GeneralName dns = new(GeneralName.DnsName, domain);
+x509.SetPublicKey(key.Public);
+x509.SetSerialNumber(BigInteger.ValueOf(rand.NextLong()).Abs());
 x509.AddExtension(X509Extensions.SubjectAlternativeName, false, new GeneralNames([dns, dns]));
-var cert = x509.Generate(new Asn1SignatureFactory(new AlgorithmIdentifier(PkcsObjectIdentifiers.Sha256WithRsaEncryption), keyPair.Private));
-writer.GetStringBuilder().Clear();
-pw.WriteObject(cert);
-var mCert = writer.ToString();//cert
-File.WriteAllText($"{domain}.crt", mCert);
-if (passIndex != -1 && passIndex + 1 < mArgs.Length)
+var crt = x509.Generate(new Asn1SignatureFactory(PkcsObjectIdentifiers.Sha256WithRsaEncryption.Id, key.Private, rand));
+WriteObject($"{domain}.crt", crt);//crt
+if (pass != null)
 {
     using var fs = File.Create($"{domain}.pfx");//pfx
     var build = new Pkcs12StoreBuilder().Build();
-    build.SetKeyEntry(domain, new(keyPair.Private), [new(cert)]);
-    build.Save(fs, mArgs[passIndex + 1].ToCharArray(), rand);
+    build.SetKeyEntry(domain, new(key.Private), [new(crt)]);
+    build.Save(fs, pass.ToCharArray(), rand);
 }
 Console.WriteLine(LangRes.Success);
+static void WriteObject(string fileName, object obj)
+{
+    using var fs = File.Create(fileName);
+    using StreamWriter sw = new(fs);
+    using PemWriter pw = new(sw);
+    pw.WriteObject(obj);
+}

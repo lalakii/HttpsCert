@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Product>httpscert</Product>
     <AssemblyName>$(ProjectName)</AssemblyName>
-    <Version>1.1.0.0</Version>
+    <Version>1.2.0.0</Version>
     <OutputType>Exe</OutputType>
     <LangVersion>preview</LangVersion>
     <TargetFrameworks>net481</TargetFrameworks>
