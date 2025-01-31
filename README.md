@@ -19,10 +19,10 @@ Based on [BouncyCastle](https://github.com/bcgit/bc-csharp).
     
 
 + Validity period:    (Valid for 3 years)
-  
-   ```.\httpscert -d www.example.com -y 3```
+    
+    ```.\httpscert -d www.example.com -y 3```
    
-   ---
+    ---
   
 ## License
 [MIT](https://github.com/lalakii/HttpsCert/blob/master/LICENSE)
