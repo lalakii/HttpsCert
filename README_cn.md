@@ -13,7 +13,7 @@
 
 ## Demo
 
-<img src="zh.jpg">
+<img src="https://fastly.jsdelivr.net/gh/lalakii/HttpsCert@master/zh.jpg">
 
 ## License
 [MIT](https://github.com/lalakii/HttpsCert/blob/master/LICENSE)
