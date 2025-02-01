@@ -1,6 +1,6 @@
 # HttpsCert Generator for Windows
 
-[ [English](./README.md) | [简体中文](./README_cn.md_) ]
+[ [English](./README.md) | [简体中文](./README_cn.md) ]
 
 This tool easily creates HTTPS certificates (SSL) for testing.
 
