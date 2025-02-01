@@ -1,20 +1,21 @@
-﻿using System.Drawing;
+﻿using httpscert.src.lang;
+using System.Drawing;
 using System.Reflection;
-using System.Security.Principal;
 using System.Windows.Forms;
 
-namespace httpscert.src
+namespace httpscert.src.ui
 {
     [System.ComponentModel.DesignerCategory("")]
     internal sealed class LaUIForm : Form
     {
         public static readonly bool IsChinese = System.Globalization.CultureInfo.InstalledUICulture.Name.IndexOf("zh-", StringComparison.OrdinalIgnoreCase) > -1;
-        private readonly Label bc, bm, bh;
+        private readonly Label bc;
+        private readonly Label bh;
+        private readonly Label bm;
         private readonly Panel pn;
 
         public LaUIForm(ILaUI events)
         {
-            Application.EnableVisualStyles();
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.GhostWhite;
             StartPosition = FormStartPosition.CenterScreen;
@@ -52,7 +53,7 @@ namespace httpscert.src
                 {
                     p0.Color = BorderColor;
                     p0.Width = 1f;
-                    g.DrawRectangle(p0, 5, pn.Top + 5, Width - 13, Height - pn.Top - 11);
+                    g.DrawRectangle(p0, 5, pn.Top + 11, Width - 13, Height - pn.Top - 18);
                 }
 
                 if (WindowState == FormWindowState.Maximized)
@@ -109,12 +110,6 @@ namespace httpscert.src
                 p.Style &= 0x800000 | 0x20000;
                 return p;
             }
-        }
-
-        public static bool IsAdministrator()
-        {
-            using var identity = WindowsIdentity.GetCurrent();
-            return new WindowsPrincipal(identity).IsInRole(WindowsBuiltInRole.Administrator);
         }
 
         internal void Run()

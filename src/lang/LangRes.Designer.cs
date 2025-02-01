@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace httpscert.src {
+namespace httpscert.src.lang {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace httpscert.src {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("httpscert.src.LangRes", typeof(LangRes).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("httpscert.src.lang.LangRes", typeof(LangRes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -200,16 +200,24 @@ namespace httpscert.src {
         /// <summary>
         ///   查找类似 Https Cert Generator - by lalaki.cn
         ///
-        ///    -d domain
+        ///    -d domain\\t(more)\\t\\tlocalhost+127.0.0.1+example.com
         ///    -p password\\t(optional)
-        ///    -y years\\t(optional) default: 1
+        ///    -y years\\t(optional)\\tdefault: 1
         ///
-        ///Example: .\httpscert -d localhost -p password -y 2
-        /// 的本地化字符串。
+        ///Example: .\httpscert -d localhost -p password -y 2 的本地化字符串。
         /// </summary>
         internal static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 http://https.sourceforge.net/ 的本地化字符串。
+        /// </summary>
+        internal static string Url {
+            get {
+                return ResourceManager.GetString("Url", resourceCulture);
             }
         }
         

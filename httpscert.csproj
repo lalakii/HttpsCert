@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Product>httpscert</Product>
     <AssemblyName>$(ProjectName)</AssemblyName>
-    <Version>1.3.0.0</Version>
+    <Version>1.5.0.0</Version>
     <OutputType>WinExe</OutputType>
     <LangVersion>preview</LangVersion>
     <TargetFrameworks>net481</TargetFrameworks>
@@ -21,19 +21,23 @@
     <GenerateSupportedRuntime>False</GenerateSupportedRuntime>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>https.ico</ApplicationIcon>
-    <NoWarn>S1075;</NoWarn>
+    <NoWarn>S1075;SA1516;SA1600;SA1200;SA1633;SA1300;SA0001;SA1208;SA1101</NoWarn>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="https.ico" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="https.ico" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="BouncyCastle.Cryptography" Version="2.5.0" ExcludeAssets="all" />
     <Reference Include="BouncyCastle.Cryptography">
-      <HintPath>lib\BouncyCastle.Cryptography.dll</HintPath>
+      <HintPath>$(NuGetPackageRoot)bouncycastle.cryptography\2.5.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Windows.Forms" />
-    <Compile Update="src\LangRes.Designer.cs">
+    <Compile Update="src\lang\LangRes.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>LangRes.resx</DependentUpon>
@@ -43,7 +47,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Utils.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Update="src\LangRes.resx">
+    <EmbeddedResource Update="src\lang\LangRes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LangRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
