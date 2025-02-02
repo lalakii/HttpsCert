@@ -11,9 +11,9 @@ namespace httpscert.src.ui
     internal sealed class CustomForm : LaUIForm.ILaUI, IDisposable
     {
         private static readonly bool CN = LaUIForm.IsChinese;
-        private readonly Button btn = new() { AutoSize = true, Text = CN ? LangRes.GenCN : LangRes.Gen, TextAlign = ContentAlignment.MiddleCenter };
-        private readonly ComboBox cbx = new() { DropDownStyle = ComboBoxStyle.DropDownList, Width = 64 };
-        private readonly TextBox domains = new() { Multiline = true, Width = 380, Height = 180, ScrollBars = ScrollBars.Vertical };
+        private readonly Button btn = new() { BackColor = Color.GhostWhite, AutoSize = true, Text = CN ? LangRes.GenCN : LangRes.Gen, TextAlign = ContentAlignment.MiddleCenter };
+        private readonly ComboBox cbx = new() { DropDownStyle = ComboBoxStyle.DropDownList };
+        private readonly TextBox domains = new() { Multiline = true, Height = 180, ScrollBars = ScrollBars.Vertical };
         private readonly LaUIForm frm;
         private readonly TextBox pass = new() { UseSystemPasswordChar = true };
         private readonly Label tip2 = new() { AutoSize = true, Text = CN ? LangRes.ValidForCN : LangRes.ValidFor, TextAlign = ContentAlignment.MiddleCenter };
@@ -23,15 +23,13 @@ namespace httpscert.src.ui
 
         public CustomForm()
         {
-            using var rnd = RandomNumberGenerator.Create();
-            byte[] color = new byte[3];
-            rnd.GetBytes(color, 0, 1);
-            rnd.GetBytes(color, 1, 1);
-            rnd.GetBytes(color, 2, 1);
+            using RNGCryptoServiceProvider rnd = new();
+            var color = new byte[4];
+            rnd.GetBytes(color, 0, 4);
             frm = new(this)
             {
                 BorderVisible = true,
-                ColorPrimary = Color.FromArgb(color[0], color[1], color[2]),
+                ColorPrimary = Color.FromArgb(color[0], color[1], color[2], color[3]),
                 WindowTitle = CN ? LangRes.WindowTitleCN : LangRes.WindowTitle,
                 BorderColor = Color.LightGray,
             };
@@ -131,7 +129,9 @@ namespace httpscert.src.ui
         {
             domains.Top = tips.Top + tips.Height + 4;
             domains.Left = tips.Left;
-            content.Width = domains.Width + (domains.Left * 2);
+            content.Width = tips.Width + (domains.Left * 2);
+            domains.Width = content.Width - (domains.Left * 2) - 4;
+            cbx.Width = TextRenderer.MeasureText(cbx.Text, cbx.Font).Width * 3;
             cbx.Top = domains.Top + domains.Height + 7;
             tip2.Top = ((cbx.Height - tip2.Height) / 2) + cbx.Top;
             tip2.Left = tip3.Left = 12;
@@ -142,7 +142,9 @@ namespace httpscert.src.ui
             pass.Top = tip3.Top + ((tip3.Height - pass.Height) / 2);
             pass.Left = tip3.Left + tip3.Width + 7;
             pass.Width = content.Width - pass.Left - (domains.Left * 2) - btn.Width - 80;
-            btn.Height = 42;
+            var btnFontSize = TextRenderer.MeasureText(btn.Text, btn.Font);
+            btn.Width = (int)(btnFontSize.Width * 1.2);
+            btn.Height = (int)(btnFontSize.Height * 1.6);
             btn.Top = tip3.Top - (btn.Height / 2) - 8;
             btn.Left = content.Width - btn.Width - 20;
             content.Height = pass.Top + pass.Height + (pass.Height / 2);

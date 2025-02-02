@@ -174,7 +174,7 @@
 Example: .\httpscert -d localhost -p password -y 2</value>
   </data>
   <data name="Url" xml:space="preserve">
-    <value>http://https.sourceforge.net/</value>
+    <value>https://https.sourceforge.net/</value>
   </data>
   <data name="ValidFor" xml:space="preserve">
     <value>Valid for</value>

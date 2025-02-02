@@ -6,10 +6,11 @@
 
 密码字段是可选项，当你需要生成.pfx格式的证书文件时，才需要设置它
 
-基于 [BouncyCastle](https://github.com/bcgit/bc-csharp) 实现
+支持命令行调用，基于 [BouncyCastle](https://github.com/bcgit/bc-csharp) 实现
+
 ## Download
 
-[Sourceforge](https://sourceforge.net/projects/https/) | [Github](https://github.com/lalakii/HttpsCert/releases) | [蓝奏云1](https://a01.lanzoui.com/icu9F2mgdg0f) | [蓝奏云2](https://a01.lanzout.com/icu9F2mgdg0f)
+[Sourceforge](https://sourceforge.net/projects/https/) | [Github](https://github.com/lalakii/HttpsCert/releases) | [蓝奏云1](https://a01.lanzoui.com/iWvvB2mk7keb) | [蓝奏云2](https://a01.lanzout.com/iWvvB2mk7keb)
 
 ## Demo
 

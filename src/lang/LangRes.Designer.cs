@@ -213,7 +213,7 @@ namespace httpscert.src.lang {
         }
         
         /// <summary>
-        ///   查找类似 http://https.sourceforge.net/ 的本地化字符串。
+        ///   查找类似 https://https.sourceforge.net/ 的本地化字符串。
         /// </summary>
         internal static string Url {
             get {

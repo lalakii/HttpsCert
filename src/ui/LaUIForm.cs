@@ -119,10 +119,26 @@ namespace httpscert.src.ui
 
         protected override void Dispose(bool disposing)
         {
-            bc.Dispose();
-            bm.Dispose();
-            bh.Dispose();
-            pn.Dispose();
+            if (!bc.IsDisposed)
+            {
+                bc.Dispose();
+            }
+
+            if (!bm.IsDisposed)
+            {
+                bm.Dispose();
+            }
+
+            if (!bh.IsDisposed)
+            {
+                bh.Dispose();
+            }
+
+            if (!pn.IsDisposed)
+            {
+                pn.Dispose();
+            }
+
             base.Dispose(disposing);
         }
 
@@ -146,7 +162,7 @@ namespace httpscert.src.ui
             {
                 if (it.BackColor != Color.Transparent)
                 {
-                    it.Font = new Font("Segoe UI", it.Font.Size);
+                    it.Font = new Font("Segoe UI", it.Font.Size * 2f);
                 }
 
                 var cs = it.Controls;

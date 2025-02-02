@@ -42,11 +42,6 @@ namespace httpscert.src.legacy
                 return -1;
             }
 
-            if (year < 1 || year > 101)
-            {
-                year = 1;
-            }
-
             Utils.Generate(".", domains, pass, year);
             return 0;
         }
